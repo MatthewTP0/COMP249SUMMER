@@ -17,4 +17,12 @@ public class UndergraduateProgram extends Program{
         super(undergraduateProgram);
         this.accredited = undergraduateProgram.accredited;
     }
+
+    public static int getCreditCost() {
+        return creditCost;
+    }
+
+    public static void setCreditCost( int creditCostIn){
+        creditCost = creditCostIn;
+    }
 }

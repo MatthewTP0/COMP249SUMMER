@@ -56,6 +56,7 @@ public class Program {
         this.institution = institution;
     }
 
+
     public Program() {}
 
     public Program(String name, String specialization, Course[] requiredCourses, Course[] electiveCourses, int totalCredits, String institution) {
@@ -80,5 +81,7 @@ public class Program {
         return "Program [name=" + name + ", specialization=" + specialization + ", requiredCourses="
                 + ", totalCredits=" + totalCredits + ", institution=" + institution + "]";
     }
+
+
 
 }

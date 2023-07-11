@@ -2,27 +2,36 @@ package Remaining;
 import ProgramClasses.*;
 public class Main {
 
-    public static String findLeastAndMostExpensiveProgram(Program[] programsArr) {
-        Program highest = programsArr[0];
-        String result = "";
-        for(int i=0;i<programsArr.length;i++) {
-            if (programsArr[i].getTotalCredits() > highest.getTotalCredits()){
-                highest = programsArr[i];
-            }
+    public static int getCreditCost(Program program) {
+        if (program instanceof GraduateProgram) {
+            return GraduateProgram.getCreditCost();
+        } else if (program instanceof UndergraduateProgram) {
+            return UndergraduateProgram.getCreditCost();
+        } else {
+            // Default value if the program type is unknown
+            return 0;
         }
+    }
+    public static String findLeastAndMostExpensiveProgram(Program[] programsArr) {
+        if (programsArr == null || programsArr.length == 0) {
+            return "There are no programs.";
+        }
+
+        Program highest = programsArr[0];
         Program lowest = programsArr[0];
-        for(int i=0;i<programsArr.length;i++) {
-            if (programsArr[i].getTotalCredits() < highest.getTotalCredits()){
+
+        for (int i = 1; i < programsArr.length; i++) {
+            int highestTotalCost = highest.getTotalCredits() * getCreditCost(programsArr[i]);
+            int currentTotalCost = programsArr[i].getTotalCredits() * getCreditCost(programsArr[i]);
+
+            if (currentTotalCost > highestTotalCost) {
+                highest = programsArr[i];
+            } else if (currentTotalCost < highestTotalCost) {
                 lowest = programsArr[i];
             }
         }
 
-        if (programsArr == null) {
-            result =  "There is none";
-        }
-        if (highest!=null&&lowest!=null) {
-            result = "The highest is "+highest.toString()+"\nThe lowest is "+lowest.toString();
-        }
+        String result = "The highest is " + highest.toString() + "\nThe lowest is " + lowest.toString();
         return result;
     }
 
@@ -60,10 +69,18 @@ public class Main {
         for(Course courseElement:electiveCourses1 ){
             totalCredits1 += courseElement.getCredits();
         }
+        //UndergraduateProgram default1 = new UndergraduateProgram();
+        UndergraduateProgram.setCreditCost(5);
 
-        UndergraduateProgram g0 = new UndergraduateProgram("Computer Science","Data Analytics",requiredCourses1, electiveCourses1, totalCredits1, "Concordia", true);
+        int totalCost1 = (UndergraduateProgram.getCreditCost())*totalCredits1;
+        UndergraduateProgram p0 = new UndergraduateProgram("Computer Science","Data Analytics",requiredCourses1, electiveCourses1, totalCredits1, "Concordia", true);
 
+        GraduateProgram p1 = new GraduateProgram("Computer Science","Data Analytics",requiredCourses1, electiveCourses1, totalCredits1, "Concordia", "John");
+        Program[] programsArr = new Program[2];
+        programsArr[0] = p0;
+        programsArr[1] = p1;
 
+        System.out.println(findLeastAndMostExpensiveProgram(programsArr));
 
 
 
