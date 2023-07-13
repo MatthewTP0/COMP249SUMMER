@@ -25,4 +25,22 @@ public class UndergraduateProgram extends Program{
     public static void setCreditCost( int creditCostIn){
         creditCost = creditCostIn;
     }
+
+    public String toString() {
+        return super.toString().substring(0 , super.toString().length()-1) + ", accredited=" + accredited + "]" ;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (!(obj instanceof UndergraduateProgram)) {
+            return false;
+        }
+
+        UndergraduateProgram program = (UndergraduateProgram) obj;
+        return accredited == program.accredited;
+    }
 }

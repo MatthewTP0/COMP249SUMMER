@@ -23,5 +23,21 @@ public class GraduateProgram extends Program{
     public static void setCreditCost( int creditCostIn){
         creditCost = creditCostIn;
     }
+    public String toString() {
+        return super.toString().substring(0 , super.toString().length()-1) + ", coordinator=" + coordinator + "]" ;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }	
+
+        if (!(obj instanceof GraduateProgram)) {
+            return false;
+        }
+
+        GraduateProgram program = (GraduateProgram) obj;
+        return coordinator == program.coordinator;
+    }
 }

@@ -23,4 +23,24 @@ public class SpecialProgram extends Program{
     public static void setCreditCost( int creditCostIn){
         creditCost = creditCostIn;
     }
+
+    public String toString() {
+        return super.toString().substring(0 , super.toString().length()-1) + ", duration=" + duration + "]" ;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (!(obj instanceof SpecialProgram)) {
+            return false;
+        }
+
+        SpecialProgram program = (SpecialProgram) obj;
+        return duration == program.duration;
+    }
+
+
 }
