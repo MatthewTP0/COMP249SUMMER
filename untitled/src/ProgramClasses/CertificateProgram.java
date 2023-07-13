@@ -1,5 +1,8 @@
 package ProgramClasses;
 import Remaining.*;
+
+import java.security.cert.Certificate;
+
 public class CertificateProgram extends Program{
     private int capacity;
     private static int creditCost;
@@ -25,5 +28,22 @@ public class CertificateProgram extends Program{
         creditCost = creditCostIn;
     }
 
+    @Override
+    public String toString() {
+        return super.toString().substring(0 , super.toString().length()-1) + ", capacity=" + capacity + "]" ;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (!(obj instanceof CertificateProgram)) {
+            return false;
+        }
+
+        CertificateProgram program = (CertificateProgram) obj;
+        return capacity == program.capacity;
+    }
 }

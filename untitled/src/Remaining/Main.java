@@ -17,6 +17,7 @@ public class Main {
             return "There are no programs.";
         }
 
+
         Program highest = programsArr[0];
         Program lowest = programsArr[0];
 
@@ -37,6 +38,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+    	//Object Creation
         Course c0 = new Course("Comp",4);
         Course c1 = new Course("Calculus",4);
         Course c2 = new Course("Programming",4);
@@ -53,14 +55,45 @@ public class Main {
         Course c13 = new Course("Physics",5);
         Course c14 = new Course("Chemistry",5);
         Course c15 = new Course("Physical Science", 4);
+        
+        CertificateProgram p0 = new CertificateProgram("RealEstate", "Agricultural", Course.sortCourses(new Course[]{c12, c9, c10}), Course.sortCourses(new Course[]{c6, c4, c5}), Course.sumCredits(new Course[]{c12, c9, c10}, new Course[]{c6, c4, c5}), "Concordia", 10);
+        CertificateProgram p1 = new CertificateProgram("RealEstate", "Commercial", Course.sortCourses(new Course[]{c12, c9, c10}), Course.sortCourses(new Course[]{c6, c4, c5}), Course.sumCredits(new Course[]{c12, c9, c10}, new Course[]{c6, c4, c5}), "John Abbott", 10);
+        GraduateProgram p2 = new GraduateProgram("Business" , "Finance",Course.sortCourses(new Course[]{c7, c8, c9}), Course.sortCourses(new Course[]{c10, c11, c12}), Course.sumCredits(new Course[]{c7, c8, c9}, new Course[]{c10, c11, c12}), "Concordia", "Jack Hill");
+        GraduateProgram p3 = new GraduateProgram("Law" , "Criminal Law", Course.sortCourses(new Course[]{c7, c8, c9}), Course.sortCourses(new Course[]{c10, c11, c12}), Course.sumCredits(new Course[]{c7, c8, c9}, new Course[]{c10, c11, c12}), "Harvard", "John Doe");
+        GraduateProgram p4 = new GraduateProgram("Computer Science","Data Analytics", Course.sortCourses(new Course[]{c13, c14, c15}), Course.sortCourses(new Course[]{c10, c11, c12}), Course.sumCredits(new Course[]{c13, c14, c15}, new Course[]{c10, c11, c12}), "Concordia", "Jack Hill");
+        GraduateProgram p5 = new GraduateProgram(p4);
+        UndergraduateProgram p6 = new UndergraduateProgram("Computer Science","Data Analytics", Course.sortCourses(new Course[]{c13, c14, c15}), Course.sortCourses(new Course[]{c10, c11, c12}), Course.sumCredits(new Course[]{c13, c14, c15}, new Course[]{c10, c11, c12}), "Concordia", true);
+        UndergraduateProgram p7 = new UndergraduateProgram("Paramedic","Emergency", Course.sortCourses(new Course[]{c13, c14, c15}), Course.sortCourses(new Course[]{c10, c11, c12, c1}), Course.sumCredits(new Course[]{c13, c14, c15}, new Course[]{c10, c11, c11, c1}), "Vanier College", true);
+        UndergraduateProgram p8 = new UndergraduateProgram("Nursing","Emergency", Course.sortCourses(new Course[]{c13, c14, c15}), Course.sortCourses(new Course[]{c10}), Course.sumCredits(new Course[]{c13, c14, c15}, new Course[]{c10}), "Mcgill", false);
+        UndergraduateProgram p9 = new UndergraduateProgram("Theology" , "Religion", Course.sortCourses(new Course[]{c7, c8, c9}), Course.sortCourses(new Course[]{c10, c11, c12}), Course.sumCredits(new Course[]{c7, c8, c9}, new Course[]{c10, c11, c12}), "St Marks", false);
+        
+        //Creation of Program Array
+        Program[] all_programs = new Program[]{p0,p1,p2,p3,p4,p5,p6,p7,p8,p9};
+        
+        //Testing Equality
+        //`Program.programArraytoString(all_programs);
+        System.out.println(all_programs[2].equals(all_programs[5])); //same class but copy constructor
+        System.out.println(all_programs[4].equals(all_programs[5])); //same class
+        System.out.println(all_programs[2].equals(all_programs[4])); //same class, same coordinator
+        System.out.println(all_programs[8].equals(all_programs[1])); //different class
+        System.out.println(all_programs[4].equals(all_programs[6])); //same class, copy of p4
 
+        
+    
+/*
         Course[] requiredCourses1 = new Course[2];
         requiredCourses1[0] = c1;
         requiredCourses1[1]= c2;
+        Course.sortCourses(requiredCourses1);
+
+
 
         Course[] electiveCourses1 = new Course[2];
         electiveCourses1[0] = c3;
         electiveCourses1[1] = c4;
+        Course.sortCourses(electiveCourses1);
+
+
 
         int totalCredits1 = 0;
         for(Course courseElement:requiredCourses1 ){
@@ -73,15 +106,13 @@ public class Main {
         UndergraduateProgram.setCreditCost(5);
 
         int totalCost1 = (UndergraduateProgram.getCreditCost())*totalCredits1;
-        UndergraduateProgram p0 = new UndergraduateProgram("Computer Science","Data Analytics",requiredCourses1, electiveCourses1, totalCredits1, "Concordia", true);
 
-        GraduateProgram p1 = new GraduateProgram("Computer Science","Data Analytics",requiredCourses1, electiveCourses1, totalCredits1, "Concordia", "John");
         Program[] programsArr = new Program[2];
         programsArr[0] = p0;
         programsArr[1] = p1;
 
         System.out.println(findLeastAndMostExpensiveProgram(programsArr));
-
+*/
 
 
 
